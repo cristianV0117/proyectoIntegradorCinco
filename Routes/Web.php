@@ -18,6 +18,7 @@ $app->group('/areas', function () use ($app) {
 
 $app->group('/usuarios', function () use ($app) {
 	$app->get('', '\Controllers\UsersController:index');
+	$app->post('', '\Controllers\UsersController:store');
 	$app->get('/crear', '\Controllers\UsersController:create');
 });
 
