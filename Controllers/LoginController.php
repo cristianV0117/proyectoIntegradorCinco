@@ -27,7 +27,9 @@ class LoginController extends BaseController
 			$data = $query['response']->fetchAll();
 			$statusPassword = (password_verify($this->user->data["password"], $data[0]["password"])) ? true : false;
 			if ($statusPassword) {
-				
+				session_start();
+				$_SESSION['session'] = true;
+				$_SESSION['user'] = $data[0]["firstName"];
 				return $this->response($data[0]["firstName"], 200, false, $response);
 			} else {
 				return $this->response('email y/o contraseña incorrectos', 400, true, $response);
@@ -36,6 +38,13 @@ class LoginController extends BaseController
 		} else {
 			return $this->response('LOGIN_ERR', 500, true, $response);
 		}
+	}
+
+	public function out(Request $request, Response $response, array $args): Response
+	{
+		session_start();
+		session_destroy();
+		return $this->response('Adios', 200, false, $response);
 	}
 
 	public function __destruct()
