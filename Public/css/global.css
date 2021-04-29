@@ -1,0 +1,18 @@
+body {
+	background: #f5f8fa !important;
+	color: #636b6f !important;
+}
+
+.card-header{
+	background: none !important;
+	border-color:#d3e0e9 !important;
+}
+
+.card{
+	border-color:#d3e0e9 !important;
+	color:#636b6f !important;
+}
+
+i{
+	cursor: pointer;
+}
