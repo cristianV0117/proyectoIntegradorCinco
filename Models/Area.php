@@ -1,26 +1,15 @@
 <?php namespace Models;
 class Area
 {
-    private $id;
-    private $name;
+    public $data = [];
 
-    protected function setId(int $id)
+    public function __set($name, $value)
     {
-        $this->id = $id;
+        $this->data[$name] = $value;
     }
 
-    protected function setName(String $name)
+    public function __get($name)
     {
-        $this->name = $name;
-    }
-
-    protected function getId(): int
-    {
-        return $this->id;
-    }
-
-    protected function getName(): String
-    {
-        return $this->name;
+        return $this->data[$name];
     }
 }
