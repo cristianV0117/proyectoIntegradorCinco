@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin</title>
+	<title>Usuarios</title>
 	<link rel="stylesheet" type="text/css" href="/Public/css/global.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
@@ -27,17 +27,20 @@
 				            <li><a class="dropdown-item" href="#">Something else here</a></li>
 	          			</ul>
         			</li>
-              <li  class="nav-item">
-                <a id="logOut" class="nav-link active" aria-current="page">Salir</a>
-              </li>
       			</ul>
     		</div>
   		</div>
 	</nav>
-	<div class="container col-md-10 mt-5">
-	  <h1 class="display-4">Panel de administración! <?= $_SESSION['user'] ?></h1>
+	<div class="container col-md-10 mt-5" >
+		<a href="/usuarios/crear" class="btn btn-outline-primary" role="button" >Registrar usuario</a>
+		<div class="card mt-2">
+			<div class="card-header">
+				<center><h3>Lista de usuarios</h3></center>
+			</div>
+			<div class="card-body">
+				
+			</div>
+		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="/Public/js/Login.js"></script>
 </body>
 </html>
