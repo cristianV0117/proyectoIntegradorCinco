@@ -68,7 +68,7 @@
 						</div>
 						<div class="col-md-4">
 							<label><h4>Contraseña</h4></label>
-							<input id="password" type="text" class="form-control" placeholder="Contraseña..." required />
+							<input id="password" type="password" class="form-control" placeholder="Contraseña..." required />
 						</div>
 					</div>
 					<hr />

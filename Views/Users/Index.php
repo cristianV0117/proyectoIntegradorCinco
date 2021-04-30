@@ -38,7 +38,23 @@
 				<center><h3>Lista de usuarios</h3></center>
 			</div>
 			<div class="card-body">
-				
+				<table class="table table-dark">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						foreach ($data as $value) {
+							echo '<tr><td>'.$value["id"].'</td><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td></tr>';
+						}
+						?>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

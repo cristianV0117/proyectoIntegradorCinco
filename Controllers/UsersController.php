@@ -18,7 +18,14 @@ class UsersController extends BaseController
 
 	public function index(Request $request, Response $response, array $args)
 	{
-		View::view('Users/Index', null);
+		$sql = "SELECT * FROM users";
+		$query = $this->DB->query($sql);
+		if ($query["response"]->execute()) {
+            $data = $query["response"]->fetchAll();
+            View::view('Users/Index', $data);
+        } else {
+        	return $this->response('Ha ocurrido un error', 500, true, $response);
+        }
 	}
 
 	public function create(Request $request, Response $response, array $args)
