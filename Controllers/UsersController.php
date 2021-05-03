@@ -64,6 +64,19 @@ class UsersController extends BaseController
 		
 	}
 
+	public function destroy(Request $request, Response $response, array $args): Response
+	{
+		$this->user->id = $args["id"];
+		$sql = "DELETE FROM users WHERE id = :id";
+		$query = $this->DB->query($sql);
+		$query['response']->bindParam(':id', $this->user->data["id"]);
+		if ($query['response']->execute()) {
+			return $this->response("Se ha eliminado el registro", 200, false, $response);
+		} else {
+			return $this->response('Ha ocurrido un error', 500, true, $response);
+		}
+	}
+
 	public function __destruct()
 	{
 		$this->DB = null;

@@ -4,6 +4,7 @@
 	<title>Usuarios</title>
 	<link rel="stylesheet" type="text/css" href="/Public/css/global.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -38,19 +39,21 @@
 				<center><h3>Lista de usuarios</h3></center>
 			</div>
 			<div class="card-body">
-				<table class="table table-dark">
+				<table class="table table-borderless">
 					<thead>
 						<tr>
 							<th>#</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>Email</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						foreach ($data as $value) {
-							echo '<tr><td>'.$value["id"].'</td><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td></tr>';
+							echo '<tr><td>'.$value["id"].'</td><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td><td><button class="btn btn-outline-primary" >Editar</button></td><td><button key="'.$value["id"].'" class="btn btn-outline-danger delete" >Eliminar</button></td></tr>';
 						}
 						?>
 					</tbody>
@@ -58,5 +61,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="/node_modules/sweetalert2/dist/sweetalert2.min.js" ></script>
+	<script type="text/javascript" src="/Public/js/Users.js"></script>
 </body>
 </html>

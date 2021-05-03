@@ -19,8 +19,9 @@ $app->group('/areas', function () use ($app) {
 $app->group('/usuarios', function () use ($app) {
 	$app->get('', '\Controllers\UsersController:index');
 	$app->post('', '\Controllers\UsersController:store');
+	$app->delete('/{id}', '\Controllers\UsersController:destroy');
 	$app->get('/crear', '\Controllers\UsersController:create');
-});
+})->add(new Auth());
 
 $app->get('/admin', function () {
 	View::view('AdminView', null);
