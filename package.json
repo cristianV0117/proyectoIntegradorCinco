@@ -1,0 +1,26 @@
+{
+  "name": "proyectointegrador",
+  "version": "1.0.0",
+  "description": "node",
+  "main": "index.js",
+  "dependencies": {
+    "sweetalert2": "^10.16.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristianV0117/proyectoIntegradorCinco.git"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "author": "sm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristianV0117/proyectoIntegradorCinco/issues"
+  },
+  "homepage": "https://github.com/cristianV0117/proyectoIntegradorCinco#readme"
+}
