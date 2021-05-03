@@ -5,6 +5,7 @@ class Users
 		this.route = "/usuarios"
 		this.create = document.getElementById('create')
 		this.alert = document.getElementById('alert')
+		this.delete = document.getElementsByClassName('delete')
 	}
 
 	store()
@@ -57,5 +58,43 @@ class Users
 		}
 		return this
 	}
+
+	destroy()
+	{
+		if (!this.delete != null) {
+			for (let i = 0; i < this.delete.length; i++) {
+				this.delete[i].addEventListener('click', () => {
+					Swal.fire({
+						  title: 'Esta seguro?',
+						  icon: 'warning',
+						  showCancelButton: true,
+						  confirmButtonColor: '#3085d6',
+						  cancelButtonColor: '#d33',
+						  confirmButtonText: 'Eliminar',
+						  cancelButtonText: 'Cancelar'
+					}).then((result) => {
+						if (result.isConfirmed) {
+						    let id = this.delete[i].getAttribute('key')
+						    fetch(this.route + `/${id}`, {
+						    	method: 'DELETE'
+						    }).then(json => {
+						    	return json.json()
+						    }).then(response => {
+						    	if (!response.error) {
+						    		setTimeout(() => {
+			                            location.replace("/usuarios");
+			                        }, 1000);
+						    	} else {
+						    		alert(response.message)
+						    	}
+						    })
+						}
+					})
+					
+				})
+			}
+		}
+		return this
+	}
 }
-(new Users()).store()
+(new Users()).store().destroy()
