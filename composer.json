@@ -4,7 +4,8 @@
             "Controllers\\": "Controllers/",
             "Models\\": "Models/",
             "Config\\": "Config/",
-            "Core\\": "Core/"
+            "Core\\": "Core/",
+            "Services\\": "Services/"
         }
     },
     "require": {

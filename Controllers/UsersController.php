@@ -1,6 +1,7 @@
 <?php namespace Controllers;
 use Slim\Http\{Request, Response};
 use Controllers\BaseController;
+use Services\AreaService;
 use Core\Base;
 use Models\User;
 use Core\MotorView as View;
@@ -9,16 +10,25 @@ class UsersController extends BaseController
 {
 	private $user;
 	private $DB;
+	private $areaService;
 
 	public function __construct()
     {
     	$this->DB = new Base();
         $this->user = new User();
+        $this->areaService = new AreaService();
     }
 
 	public function index(Request $request, Response $response, array $args)
 	{
-		$sql = "SELECT * FROM users";
+		$sql = "SELECT 
+					users.id,
+					users.firstName,
+					users.firstLastName,
+					users.email,
+					areas.name 
+					FROM users
+					INNER JOIN areas ON areas.id = users.areaId";
 		$query = $this->DB->query($sql);
 		if ($query["response"]->execute()) {
             $data = $query["response"]->fetchAll();
@@ -30,7 +40,7 @@ class UsersController extends BaseController
 
 	public function create(Request $request, Response $response, array $args)
 	{
-		View::view('Users/Create', null);
+		View::view('Users/Create', $this->areaService->allAreas());
 	}
 
 	public function store(Request $request, Response $response, array $args): Response
@@ -43,7 +53,7 @@ class UsersController extends BaseController
 		$this->user->documentUser   = $post["documentUser"];
 		$this->user->email          = $post["email"];
 		$this->user->password       = password_hash($post["password"], PASSWORD_DEFAULT);
-		$this->user->areaId         = 0;
+		$this->user->areaId         = $post["area"];
 		$this->user->status         = 1;
 		$sql = "INSERT INTO users (firstName, secondName, firstLastName, secondLastName, document, email, password, areaId, status) VALUES (:firstName, :secondName, :firstLastName, :secondLastName, :document, :email, :password, :areaId, :status)";
 		$query = $this->DB->query($sql);
@@ -81,5 +91,6 @@ class UsersController extends BaseController
 	{
 		$this->DB = null;
 		$this->user = null;
+		$this->areaService = null;
 	}
 }

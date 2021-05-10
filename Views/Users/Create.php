@@ -58,15 +58,26 @@
 						</div>
 					</div>
 					<div class="row mt-3">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<label><h4>Documento</h4></label>
 							<input id="documentUser" type="number" class="form-control" placeholder="Documento..." required />
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<label><h4>Email</h4></label>
 							<input id="email" type="email" class="form-control" placeholder="Email..." required />
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
+							<label><h4>Area</h4></label>
+							<select id="areas" class="form-control" required>
+								<option value="">-- Area --</option>
+								<?php
+								foreach ($data as $value) {
+									echo '<option value="'.$value["id"].'">'.$value["name"].'</option>';
+								}
+								?>
+							</select>
+						</div>
+						<div class="col-md-3">
 							<label><h4>Contraseña</h4></label>
 							<input id="password" type="password" class="form-control" placeholder="Contraseña..." required />
 						</div>
