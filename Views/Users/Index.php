@@ -42,10 +42,10 @@
 				<table class="table table-borderless">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>Email</th>
+							<th>Area</th>
 							<th>Editar</th>
 							<th>Eliminar</th>
 						</tr>
@@ -53,7 +53,7 @@
 					<tbody>
 						<?php
 						foreach ($data as $value) {
-							echo '<tr><td>'.$value["id"].'</td><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td><td><button class="btn btn-outline-primary" >Editar</button></td><td><button key="'.$value["id"].'" class="btn btn-outline-danger delete" >Eliminar</button></td></tr>';
+							echo '<tr><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td><td>'.$value["name"].'</td><td><button class="btn btn-outline-primary" >Editar</button></td><td><button key="'.$value["id"].'" class="btn btn-outline-danger delete" >Eliminar</button></td></tr>';
 						}
 						?>
 					</tbody>

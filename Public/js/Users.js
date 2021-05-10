@@ -20,6 +20,7 @@ class Users
 				let documentUser = document.getElementById('documentUser').value
 				let email = document.getElementById('email').value
 				let password = document.getElementById('password').value
+				let area = document.getElementById("areas").value
 				const data = {
 					'firstName': firstName,
 					'secondName': secondName,
@@ -27,7 +28,8 @@ class Users
 					'secondLastName': secondLastName,
 					'documentUser': documentUser,
 					'email': email,
-					'password': password
+					'password': password,
+					'area': parseInt(area)
 				}
 				fetch(this.route, {
 					method: 'POST',
