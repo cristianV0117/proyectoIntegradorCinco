@@ -31,7 +31,7 @@ class HistoryController extends BaseController
 	
 	public function store(array $data)
 	{
-		$sql = "INSERT INTO loginHistory (user, type, ip, browser, so) VALUES (:user, :type, :ip, :browser, :so)";
+		$sql = "INSERT INTO loginHistory (user, type, ip, browser, so, dateLogin) VALUES (:user, :type, :ip, :browser, :so, CURRENT_TIMESTAMP)";
 		$query = $this->DB->query($sql);
 		$query['response']->bindParam(':user', $data["user"]);
 		$query['response']->bindParam(':type', $data["type"]);
