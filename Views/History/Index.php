@@ -49,16 +49,17 @@
                   <thead>
                      <tr>
                         <th>Usuario</th>
-                        <th>Tupo</th>
+                        <th>Tipo</th>
                         <th>Ip</th>
                         <th>Navegador</th>
                         <th>S.O</th>
+                        <th>Fecha</th>
                      </tr>
                   </thead>
                   <tbody>
                      <?php
                         foreach ($data as $value) {
-                        	echo '<tr><td>'.$value['user'].'</td><td>'.$value['type'].'</td><td>'.$value['ip'].'</td><td>'.$value['browser'].'</td><td>' .$value['so']. '</td></tr>';
+                        	echo '<tr><td>'.$value['user'].'</td><td>'.$value['type'].'</td><td>'.$value['ip'].'</td><td>'.$value['browser'].'</td><td>' .$value['so']. '</td><td>'.$value['dateLogin'].'</td></tr>';
                         }
                         ?>
                   </tbody>

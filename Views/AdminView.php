@@ -73,7 +73,7 @@
                                     <h2>Bienvenido <?= $_SESSION['user'] ?>!</h2>
                                     <br />
                                     <p class="text-justify" >
-                                       Bienvenido a nuestro panel de administracion en donde podrás tener control de un pequeño dormulario de administracion de usuarios donde podrás asignarles un area, ver historial de ingresos y salidas, editar perfil y consultar informacion basica sobre este proyecto realizado para la <strong>Universidad de San Mateo</strong>
+                                       Bienvenido a nuestro panel de administración en donde podrás tener control de un pequeño formulario de administración de usuarios donde podrás asignarles un area, ver historial de ingresos y salidas, editar perfil y consultar informacion basica sobre este proyecto realizado para la <strong>Universidad de San Mateo</strong>
                                     </p>
                                  </div>
                               </div>
