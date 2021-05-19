@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Usuarios</title>
+      <title>Historial de ingresos y salidas</title>
       <link rel="stylesheet" type="text/css" href="/Public/css/global.css">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
@@ -38,29 +38,27 @@
          </div>
       </nav>
       <div class="container col-md-10 mt-5" >
-         <a href="/usuarios/crear" class="btn btn-outline-primary" role="button" >Registrar usuario</a>
          <div class="card mt-2">
             <div class="card-header">
                <center>
-                  <h3>Lista de usuarios</h3>
+                  <h3>Historial de ingresos y salidas</h3>
                </center>
             </div>
             <div class="card-body">
                <table class="table table-borderless">
                   <thead>
                      <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Area</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Usuario</th>
+                        <th>Tupo</th>
+                        <th>Ip</th>
+                        <th>Navegador</th>
+                        <th>S.O</th>
                      </tr>
                   </thead>
                   <tbody>
                      <?php
                         foreach ($data as $value) {
-                        	echo '<tr><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td><td>'.$value["name"].'</td><td><button class="btn btn-outline-primary" >Editar</button></td><td><button key="'.$value["id"].'" class="btn btn-outline-danger delete" >Eliminar</button></td></tr>';
+                        	echo '<tr><td>'.$value['user'].'</td><td>'.$value['type'].'</td><td>'.$value['ip'].'</td><td>'.$value['browser'].'</td><td>' .$value['so']. '</td></tr>';
                         }
                         ?>
                   </tbody>
