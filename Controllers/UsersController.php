@@ -55,6 +55,11 @@ class UsersController extends BaseController
 		$this->user->password       = password_hash($post["password"], PASSWORD_DEFAULT);
 		$this->user->areaId         = $post["area"];
 		$this->user->status         = 1;
+
+		if ($this->exist('users', ["document" => $this->user->data["documentUser"], "email" => $this->user->data["email"]])) {
+			return $this->response("El documento y/o email ya existen", 400, true, $response);
+		}
+		
 		$sql = "INSERT INTO users (firstName, secondName, firstLastName, secondLastName, document, email, password, areaId, status) VALUES (:firstName, :secondName, :firstLastName, :secondLastName, :document, :email, :password, :areaId, :status)";
 		$query = $this->DB->query($sql);
 		$query['response']->bindParam(':firstName', $this->user->data["firstName"]);
@@ -71,7 +76,6 @@ class UsersController extends BaseController
 		} else {
 			return $this->response('Ha ocurrido un error', 500, true, $response);
 		}
-		
 	}
 
 	public function destroy(Request $request, Response $response, array $args): Response

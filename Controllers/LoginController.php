@@ -1,17 +1,19 @@
 <?php namespace Controllers;
 use Slim\Http\{Request, Response};
-use Controllers\BaseController;
+use Controllers\{BaseController, HistoryController};
 use Core\Base;
 use Models\User;
 class LoginController extends BaseController
 {
 	private $user;
 	private $DB;
+	private $history;
 
 	public function __construct()
     {
     	$this->DB = new Base();
         $this->user = new User();
+        $this->history = new HistoryController();
     }
 
 	public function login(Request $request, Response $response, array $args): Response
@@ -31,6 +33,8 @@ class LoginController extends BaseController
 					session_start();
 					$_SESSION['session'] = true;
 					$_SESSION['user'] = $data[0]["firstName"];
+					$_SESSION['email'] = $this->user->data["email"];
+					$this->history->store(["user" => $this->user->data["email"], "type" => "Ingreso a la plataforma"]);
 					return $this->response($data[0]["firstName"], 200, false, $response);
 				} else {
 					return $this->response('email y/o contraseña incorrectos', 400, true, $response);
@@ -49,6 +53,7 @@ class LoginController extends BaseController
 	{
 		session_start();
 		session_destroy();
+		$this->history->store(["user" => $_SESSION["email"], "type" => "Salida de la plataforma"]);
 		return $this->response('Adios', 200, false, $response);
 	}
 
@@ -56,5 +61,6 @@ class LoginController extends BaseController
 	{
 		$this->DB = null;
 		$this->user = null;
+		$this->history = null;
 	}
 }

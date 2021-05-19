@@ -1,5 +1,5 @@
 <?php
-use Core\Auth;
+use Core\{Auth, AuthHome};
 use Core\MotorView as View;
 
 $app = new \Slim\App([
@@ -10,7 +10,7 @@ $app = new \Slim\App([
 
 $app->get('/', function () {
     View::view('HomeView', null);
-});
+})->add(new AuthHome());
 
 $app->group('/areas', function () use ($app) {
 	$app->get('', '\Controllers\AreasController:index');
@@ -22,6 +22,8 @@ $app->group('/usuarios', function () use ($app) {
 	$app->delete('/{id}', '\Controllers\UsersController:destroy');
 	$app->get('/crear', '\Controllers\UsersController:create');
 })->add(new Auth());
+
+$app->get('/history/login', '\Controllers\HistoryController:index')->add(new Auth());
 
 $app->get('/admin', function () {
 	View::view('AdminView', null);
