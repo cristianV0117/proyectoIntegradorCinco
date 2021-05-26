@@ -87,7 +87,7 @@
                                  <li class="list-group-item">HTML 5</li>
                                  <li class="list-group-item">BOOTSTRAP 5</li>
                                  <li class="list-group-item">SLIM PHP 3</li>
-                                 <li class="list-group-item">NMP - NODE JS</li>
+                                 <li class="list-group-item">NPM - NODE JS</li>
                                  <li class="list-group-item">COMPOSER</li>
                                  <li class="list-group-item">XAMPP</li>
                                  <li class="list-group-item">VISUAL STUDIO CODE</li>

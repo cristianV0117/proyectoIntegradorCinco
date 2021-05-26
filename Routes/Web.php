@@ -21,6 +21,8 @@ $app->group('/usuarios', function () use ($app) {
 	$app->post('', '\Controllers\UsersController:store');
 	$app->delete('/{id}', '\Controllers\UsersController:destroy');
 	$app->get('/crear', '\Controllers\UsersController:create');
+	$app->get('/{id}', '\Controllers\UsersController:edit');
+	$app->put('/{id}', '\Controllers\UsersController:update');
 })->add(new Auth());
 
 $app->get('/history/login', '\Controllers\HistoryController:index')->add(new Auth());
@@ -32,6 +34,10 @@ $app->get('/admin', function () {
 $app->group('/login', function () use ($app) {
 	$app->get('', '\Controllers\LoginController:out');
 	$app->post('', '\Controllers\LoginController:login');
+});
+
+$app->group('/forgot-password', function () use  ($app) {
+	$app->get('', '\Controllers\ForgotPasswordController:index');
 });
 
 

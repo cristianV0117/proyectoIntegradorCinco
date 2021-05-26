@@ -29,6 +29,8 @@
 			    <hr />
 			    <button class="btn btn-outline-success" >Iniciar sesion</button>
 			</form>
+			<hr />
+			<center><a href="/forgot-password" role="button" class="btn btn-outline-danger" >Olvidé mi contraseña :(</a></center>
 			<span class="mt-3" id="alert" ></span>
 		  </div>
 		</div>

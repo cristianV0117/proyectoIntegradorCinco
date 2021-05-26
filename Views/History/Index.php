@@ -5,6 +5,7 @@
       <link rel="stylesheet" type="text/css" href="/Public/css/global.css">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    </head>
    <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-info">
@@ -44,7 +45,7 @@
                   <h3>Historial de ingresos y salidas</h3>
                </center>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                <table class="table table-borderless">
                   <thead>
                      <tr>

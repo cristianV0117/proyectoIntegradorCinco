@@ -5,6 +5,7 @@
       <link rel="stylesheet" type="text/css" href="/Public/css/global.css">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    </head>
    <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-info">
@@ -45,13 +46,14 @@
                   <h3>Lista de usuarios</h3>
                </center>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                <table class="table table-borderless">
                   <thead>
                      <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Email</th>
+                        <th>Documento</th>
                         <th>Area</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
@@ -60,7 +62,7 @@
                   <tbody>
                      <?php
                         foreach ($data as $value) {
-                        	echo '<tr><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td><td>'.$value["name"].'</td><td><button class="btn btn-outline-primary" >Editar</button></td><td><button key="'.$value["id"].'" class="btn btn-outline-danger delete" >Eliminar</button></td></tr>';
+                        	echo '<tr><td>'.$value['firstName'].'</td><td>'.$value["firstLastName"].'</td><td>'.$value['email'].'</td><td>'.$value["document"].'</td><td>'.$value["name"].'</td><td><a role="button" class="btn btn-outline-primary" href="/usuarios/'.$value["id"].'">Editar<a/></td><td><button key="'.$value["id"].'" class="btn btn-outline-danger delete" >Eliminar</button></td></tr>';
                         }
                         ?>
                   </tbody>
