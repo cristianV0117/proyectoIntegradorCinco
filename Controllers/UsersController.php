@@ -26,6 +26,7 @@ class UsersController extends BaseController
 					users.firstName,
 					users.firstLastName,
 					users.email,
+					users.document,
 					areas.name 
 					FROM users
 					INNER JOIN areas ON areas.id = users.areaId";
@@ -73,6 +74,71 @@ class UsersController extends BaseController
 		$query['response']->bindParam(':status', $this->user->data["status"]);
 		if ($query['response']->execute()) {
 			return $this->response("Se ha registrado correctamente", 201, false, $response);
+		} else {
+			return $this->response('Ha ocurrido un error', 500, true, $response);
+		}
+	}
+
+	public function edit(Request $request, Response $response, array $args)
+	{
+		$this->user->id = $args["id"];
+		$sql = "SELECT 
+					users.id,
+					users.firstName, 
+					users.secondName, 
+					users.firstLastName, 
+					users.secondLastName, 
+					users.document, 
+					users.email,
+					areas.id as areaId,
+					areas.name
+					FROM users 
+					INNER JOIN areas ON areas.id = users.areaId
+					WHERE users.id = :id";
+		$query = $this->DB->query($sql);
+		$query['response']->bindParam(':id', $this->user->data["id"]);
+		if ($query['response']->execute()) {
+			$data = $query["response"]->fetchAll();
+			View::view('Users/Edit', [$data, $this->areaService->allAreas()]);
+		} else {
+			return $this->response('Ha ocurrido un error', 500, true, $response);
+		}
+	}
+
+	public function update(Request $request, Response $response, array $args): Response
+	{
+		$post = $request->getParsedBody();
+		$this->user->firstName      = $post["firstName"];
+		$this->user->secondName     = $post["secondName"];
+		$this->user->firstLastName  = $post["firstLastName"];
+		$this->user->secondLastName = $post["secondLastName"];
+		$this->user->documentUser   = $post["documentUser"];
+		$this->user->email          = $post["email"];
+		$this->user->areaId         = $post["area"];
+		$this->user->id = $args["id"];
+		if ($this->exist('users', ["document" => $this->user->data["documentUser"], "email" => $this->user->data["email"]])) {
+			return $this->response("El documento y/o email ya existen", 400, true, $response);
+		}
+		$sql = "UPDATE users SET 
+					firstName = :firstName, 
+					secondName = :secondName, 
+					firstLastName = :firstLastName, 
+					secondLastName = :secondLastName, 
+					document = :document, 
+					email = :email,
+					areaId = :areaId
+				WHERE id = :id";
+		$query = $this->DB->query($sql);
+		$query['response']->bindParam(':firstName', $this->user->data["firstName"]);
+		$query['response']->bindParam(':secondName', $this->user->data["secondName"]);
+		$query['response']->bindParam(':firstLastName', $this->user->data["firstLastName"]);
+		$query['response']->bindParam(':secondLastName', $this->user->data["secondLastName"]);
+		$query['response']->bindParam(':document', $this->user->data["documentUser"]);
+		$query['response']->bindParam(':email', $this->user->data["email"]);
+		$query['response']->bindParam(':areaId', $this->user->data["areaId"]);
+		$query['response']->bindParam(':id', $this->user->data["id"]);
+		if ($query['response']->execute()) {
+			return $this->response("Se ha editado correctamente", 201, false, $response);
 		} else {
 			return $this->response('Ha ocurrido un error', 500, true, $response);
 		}
