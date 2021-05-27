@@ -64,7 +64,7 @@ class Users
 
 	edit()
 	{
-		if (!this.update != null) {
+		if (this.update != null) {
 			this.update.addEventListener('submit', event => {
 				event.preventDefault()
 				let firstName = document.getElementById('firstNameEdit').value
