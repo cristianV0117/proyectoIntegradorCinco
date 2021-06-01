@@ -116,9 +116,6 @@ class UsersController extends BaseController
 		$this->user->email          = $post["email"];
 		$this->user->areaId         = $post["area"];
 		$this->user->id = $args["id"];
-		if ($this->exist('users', ["document" => $this->user->data["documentUser"], "email" => $this->user->data["email"]])) {
-			return $this->response("El documento y/o email ya existen", 400, true, $response);
-		}
 		$sql = "UPDATE users SET 
 					firstName = :firstName, 
 					secondName = :secondName, 

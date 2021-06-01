@@ -38,6 +38,7 @@ $app->group('/login', function () use ($app) {
 
 $app->group('/forgot-password', function () use  ($app) {
 	$app->get('', '\Controllers\ForgotPasswordController:index');
+	$app->post('/email', 'Controllers\ForgotPasswordController:search');
 });
 
 
