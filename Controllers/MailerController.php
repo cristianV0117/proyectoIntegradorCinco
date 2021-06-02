@@ -13,9 +13,6 @@ class MailerController
     public function __construct()
     {
         $this->mail = new PHPMailer(true);
-        $this->host = 'smtp.gmail.com';
-        $this->user = 'cvo6372@gmail.com';
-        $this->pass = 'slamming12300';
         $this->port = 587;
         $this->secure = 'tls';
         $this->config();
